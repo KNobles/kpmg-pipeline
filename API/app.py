@@ -12,7 +12,7 @@ async def root():
     return "Alive"
 
 
-@app.get("/cla", status_code=status.HTTP_200_OK, response_model=list[dict])
+@app.get("/cla", status_code=status.HTTP_200_OK)
 async def cla_get():
     CLA_list = get_CLAs()
 
