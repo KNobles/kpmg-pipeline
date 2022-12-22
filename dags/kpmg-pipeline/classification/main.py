@@ -20,7 +20,7 @@ object_id = object_dict["objectID"]
 object_full_text = object_dict["full_text"]
 
 #import the classification table
-df_mapping = pd.read_excel('dags/kpmg-pipeline/classification/Classification_excel.xlsx', index_col=None)
+df_mapping = pd.read_excel('Classification_excel.xlsx', index_col=None)
 df_mapping["Key words"] = df_mapping["Key words"].str.lower()
 
 #Create df for each of the 4 categories

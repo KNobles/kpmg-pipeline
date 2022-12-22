@@ -3,6 +3,7 @@ import time
 import requests
 from datetime import datetime, timedelta
 from algoliasearch.search_client import SearchClient
+
 from utils.upload_file import upload_file
 
 now = datetime.now()
@@ -23,7 +24,7 @@ dl_url = "https://public-search.emploi.belgique.be/website-download-service/join
 #200-2021-013463
 # If you want to filter on a specific CP (here 200), instead of dates. Both dates and CP filters can also be combined in the 'json' dict parameter
 # req = requests.post(url,json={"lang":"fr","jc":"2000000","title":"","superTheme":"","theme":"","textSearchTerms":"","depositNumber":{"start":"174187","end":"174187"}})
-req = requests.post(url, json={"lang":"fr","jc":"2000000","title":"Frais de transports","superTheme":"","theme":"","textSearchTerms":"","depositNumber":{"start":"168824","end":"168824"}})
+req = requests.post(url, json={"lang":"fr","jc":"2000000","title":"","superTheme":"","theme":"","textSearchTerms":"", "depositNumber":{"start":"159780","end":"159780"}})
 list_data = req.json()
 
 def scrape(dl_url, list_data):
@@ -42,7 +43,7 @@ def scrape(dl_url, list_data):
         except Exception as e:
             jc_metadata = {
             # "objectID": data["documentLink"].split('/')[1][:-4],
-            "objectID": object_id + "_test",
+            "objectID": object_id,
             "jcId": data["jcId"], 
             "jcName": data["jcFr"], 
             "cpNumber": data["documentLink"].split('/')[0],
@@ -79,7 +80,7 @@ def scrape(dl_url, list_data):
             "articleUpdateComparison": "",
             "startDate": "",
             "endDate": "",
-            "exeption": "",
+            "exception": "",
             "vector": "",
             "inProgress": True
             }
