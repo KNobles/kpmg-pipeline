@@ -3,7 +3,7 @@ FROM python:3.10
 
 RUN mkdir /app
 WORKDIR /app
-COPY . /app
+COPY . .
 
 EXPOSE 8080
 
@@ -12,4 +12,4 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 
-CMD [ "uvicorn", "app:app", "--host=0.0.0.0", "--reload" ]
+CMD [ "uvicorn", "app:app", "--host=0.0.0.0", ]

@@ -54,18 +54,16 @@ def get_CLA_by_name(name):
 
 def get_CLAs_by_keyword(keyword):
     try:
-        CLAs = KPMG_index.search(keyword, {
-
-        })
+        CLAs = KPMG_index.search(keyword)
     except:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, 
-            detail="CLA for given name doesn't exist"
+            detail="Can't find a CLA with the given keyword"
         )
 
     return CLAs["hits"]
 
-def get_Comparison(id):
+def get_comparison(id):
     try:
         CLA = get_CLA_by_id(id)
         if CLA["parent"]!="":
@@ -83,11 +81,3 @@ def get_Comparison(id):
         )
 
     return comparison
-
-# initialize_database()
-
-# res = get_Comparison("200-2020-000391")
-
-# print(res)
-# initialize_database()
-# print(get_CLAs())
