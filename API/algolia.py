@@ -65,6 +65,29 @@ def get_CLAs_by_keyword(keyword):
 
     return CLAs["hits"]
 
+def get_Comparison(id):
+    try:
+        CLA = get_CLA_by_id(id)
+        if CLA["parent"]!="":
+            comparison = CLA["summaryCompareParent"]
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, 
+                detail="no parent for this CLA"
+        )
 
+    except:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, 
+            detail="CLA for given id doesn't exist"
+        )
+
+    return comparison
+
+# initialize_database()
+
+# res = get_Comparison("200-2020-000391")
+
+# print(res)
 # initialize_database()
 # print(get_CLAs())
