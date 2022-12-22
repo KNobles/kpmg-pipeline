@@ -5,6 +5,7 @@ import os
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.docker_operator import DockerOperator
 from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.python import PythonOperator
 # from airflow.operators.python import ShortCircuitOperator
 
 default_args = {
@@ -18,7 +19,7 @@ default_args = {
 'retry_delay'           : timedelta(minutes=5)
 }
 
-with DAG('kpmg_use_case', default_args=default_args, catchup=False) as dag:
+with DAG('kpmg_use_case', default_args=default_args, schedule_interval="15 * * * *", catchup=False) as dag:
     pipeline_id = str(uuid4())
 
     start_dag = DummyOperator(
@@ -102,6 +103,22 @@ with DAG('kpmg_use_case', default_args=default_args, catchup=False) as dag:
         }
     )
 
+    parent_comparison = DockerOperator(
+        task_id='parent_comparison',
+        image='compare_parent:latest',
+        container_name='parent_comparison_task',
+        api_version='auto',
+        auto_remove=True,
+        docker_url="unix://var/run/docker.sock",
+        network_mode="bridge",
+        environment={
+            "APP_ID": os.getenv("APP_ID"),
+            "API_ADMIN_KEY": os.getenv("API_ADMIN_KEY"),
+            "DB_NAME": os.getenv("DB_NAME"),
+            "PIPELINE_ID": pipeline_id
+        }
+    )
+
     start_dag >> scrape 
     
     scrape >> extract_text
@@ -110,4 +127,6 @@ with DAG('kpmg_use_case', default_args=default_args, catchup=False) as dag:
 
     classify_data >> summarize_text
 
-    summarize_text >> end_dag
+    summarize_text >> parent_comparison
+
+    parent_comparison >> end_dag

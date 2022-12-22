@@ -1,8 +1,5 @@
 from azure.storage.blob import BlobServiceClient
 import os
-from dotenv import load_dotenv
-# Load environment variables from the .env file
-load_dotenv(".env")
 
 def download_file(local_file_desired_path: str, blob_name: str) -> str:
     """
@@ -21,7 +18,6 @@ def download_file(local_file_desired_path: str, blob_name: str) -> str:
     if not connection_string or not container_name:
         raise ValueError("Missing environment variables... Please check your .env file")
 
-
     # Initialize the connection to Azure
     blob_service_client =  BlobServiceClient.from_connection_string(connection_string)
     
@@ -30,14 +26,14 @@ def download_file(local_file_desired_path: str, blob_name: str) -> str:
     
     print(f"Downloading file: {blob_name}...")
     
-    blob_data = blob_client.download_blob().read()#.decode("utf-8")
+    blob_data = blob_client.download_blob().read()
 
     # print("File's data: ", blob_data)
 
     print("Writing data to local file...")
     # Write data to local file 
     # (Not mandatory if you just want to read the data!)
-    with open(local_file_desired_path, "w") as file:
+    with open(local_file_desired_path, "wb") as file:
         file.write(blob_data)
     
     print("File downloaded!")

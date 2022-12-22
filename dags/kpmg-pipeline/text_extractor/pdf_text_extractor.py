@@ -43,8 +43,9 @@ def ocr_fr_detect():
 
     object_dict = results["hits"][0]
     object_id = object_dict["objectID"]
-    # TODO remove the split because it is a test
-    pdf_name = object_id.split("_")[0] + ".pdf"
+    pdf_name = object_id + ".pdf"
+    print(pdf_name)
+    print(object_dict)
     pdf_file = download_file(pdf_name, pdf_name)
 
     vowels = ['a','e','i','o','u']
