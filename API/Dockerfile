@@ -3,7 +3,7 @@ FROM python:3.10
 
 RUN mkdir /app
 WORKDIR /app
-COPY /app .
+COPY . /app
 
 EXPOSE 8080
 
