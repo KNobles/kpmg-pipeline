@@ -1,6 +1,3 @@
-
-# from preprocessing.cleaning_data import Property, preprocess
-# from predict.prediction import predict_price
 from fastapi import FastAPI, status
 from algolia import get_CLA_by_id, get_CLA_by_name, get_CLAs, initialize_database, get_CLAs_by_keyword, get_comparison
 
