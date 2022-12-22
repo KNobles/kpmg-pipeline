@@ -64,3 +64,7 @@ def get_CLAs_by_keyword(keyword):
         )
 
     return CLAs["hits"]
+
+
+# initialize_database()
+# print(get_CLAs())
