@@ -35,3 +35,5 @@ STORAGE_CONTAINER=
 7. Connect to the Airflow webserver with the user `airflow` and password `airflow` (which can also be changed in the docker-compose.yaml file)
 
 Now you can see the Airflow dashboard and run the DAG manually or leave it scheduled and wait for it to run (which should be every 15 minutes)
+
+[Here is presentation about the project](https://github.com/KNobles/kpmg-pipeline/blob/3994fc59e09e878d42ff5e88d219e4ac22a57a54/2022%2012%2023%20BeCode%20Brussels%20KPMG%20UseCase.pdf)
