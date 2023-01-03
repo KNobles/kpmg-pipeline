@@ -1,7 +1,7 @@
 # kpmg-pipeline
 Pipeline for the KPMG use case made for BeCode trainees.
 
-# Prerequisits
+# Prerequisites
 - Python (we used version 3.8+)
 - Docker
 
