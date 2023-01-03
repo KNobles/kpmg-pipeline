@@ -42,7 +42,7 @@ Here is the link to the repo's API project
 https://github.com/isidoracupara/kpmg-pipeline_API_deployment
 
 # Dashboard
-In the `dashboard` folder you will have access to the Tableau file showing the dashboard.
+In the dashboard folder you will have access to the Tableau file.
 
 ## Presentation
 [Here is the presentation about the project](https://github.com/KNobles/kpmg-pipeline/blob/3994fc59e09e878d42ff5e88d219e4ac22a57a54/2022%2012%2023%20BeCode%20Brussels%20KPMG%20UseCase.pdf)
