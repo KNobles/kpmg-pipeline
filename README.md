@@ -37,7 +37,7 @@ STORAGE_CONTAINER=
 Now you can see the Airflow dashboard and run the DAG manually or leave it scheduled and wait for it to run (which should be every 15 minutes)
 
 # API
-Here is the link to the repo's project API
+Here is the link to the repo's API project
 
 https://github.com/isidoracupara/kpmg-pipeline_API_deployment
 
